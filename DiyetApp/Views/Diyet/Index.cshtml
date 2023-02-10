@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DiyetApp.Models.Diyet>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Diyet Program Listesi</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Diyet Program Listesi</h3>
+        </div>
+        <div class="panel-body">
+            @Html.ActionLink("Yeni Ekle", "Ekle", null, new { @class = "btn btn-primary" })
+            <hr />
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:3%;"></th>
+                        <th style="width:30%;">Öğün</th>
+                        <th style="width:55%;">Öğün İçeriği</th>
+                        <th style="width:10%;">Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model)
+                    {
+
+
+                        if (i.Tamamlandimi)
+                        {
+                            <tr class="success">
+                                <td>
+
+                                    @if (i.Tamamlandimi)
+                                    {
+
+
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    }
+                                </td>
+                                <td>@i.Ogun</td>
+                                <td>@i.Aciklama</td>
+                                <td>@i.Tarih</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <tr class="warning">
+                                <td>
+
+                                    @if (i.Tamamlandimi)
+                                    {
+
+
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    }
+                                </td>
+                                <td>@i.Ogun</td>
+                                <td>@i.Aciklama</td>
+                                <td>@i.Tarih</td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
